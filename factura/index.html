@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Factura</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <main class="factura-app">
+        <header class="encabezado">
+            <p class="sobrelinea">PUNTO DE VENTA</p>
+            <h1>Factura</h1>
+            <p class="descripcion">Ingresa los datos del producto para calcular el total.</p>
+        </header>
+
+        <form id="formulario-factura" class="formulario">
+            <div class="campos">
+                <label class="campo campo-producto" for="producto">
+                    <span>Producto</span>
+                    <input type="text" placeholder="Ej. Teclado inalámbrico" id="producto" required>
+                </label>
+                <label class="campo" for="precio">
+                    <span>Precio unitario</span>
+                    <input type="number" placeholder="0" id="precio" min="0" step="0.01" required>
+                </label>
+                <label class="campo" for="cantidad">
+                    <span>Cantidad</span>
+                    <input type="number" placeholder="1" id="cantidad" min="1" step="1" required>
+                </label>
+            </div>
+            <p id="mensaje-error" class="mensaje-error" role="alert" aria-live="polite"></p>
+            <div class="botones">
+                <button class="boton-calcular" type="submit">Calcular factura</button>
+                <button class="boton-limpiar" type="reset">Limpiar</button>
+            </div>
+        </form>
+
+        <section class="resultado" id="resultado" aria-live="polite" aria-label="Detalle de la factura" hidden>
+            <div class="resultado-encabezado">
+                <div>
+                    <p class="sobrelinea">DETALLE</p>
+                    <h2>Resumen de compra</h2>
+                </div>
+                <span class="estado">Calculada</span>
+            </div>
+            <div class="producto-resumen">
+                <div>
+                    <p class="nombre-producto" id="nombre-producto"></p>
+                    <p class="detalle-producto" id="detalle-producto"></p>
+                </div>
+                <strong id="total-producto"></strong>
+            </div>
+            <dl class="totales">
+                <div><dt>Subtotal</dt><dd id="subtotal"></dd></div>
+                <div><dt>Descuento (10%)</dt><dd id="descuento"></dd></div>
+                <div><dt>IVA (19%)</dt><dd id="iva"></dd></div>
+                <div class="total-final"><dt>Total a pagar</dt><dd id="neto"></dd></div>
+            </dl>
+        </section>
+    </main>
+    <script src="script.js"></script>
+</body>
+</html>
